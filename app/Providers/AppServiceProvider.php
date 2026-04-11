@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Gate;
+use App\Models\User;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Gate manage-product: hanya admin yang bisa akses menu/halaman produk
+        Gate::define('manage-product', function (User $user) {
+            return $user->role === 'admin';
+        });
+
+        // Gate export-product: hanya admin yang bisa export data produk
+        Gate::define('export-product', function (User $user) {
+            return $user->role === 'admin';
+        });
     }
 }

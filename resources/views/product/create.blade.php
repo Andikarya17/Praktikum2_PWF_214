@@ -22,6 +22,19 @@
                         </div>
                     </div>
 
+                    {{-- Flash Messages --}}
+                    @if (session('success'))
+                        <div class="mb-4 px-4 py-3 bg-green-50 dark:bg-green-900/20 border border-green-300 dark:border-green-800 text-green-700 dark:text-green-300 rounded-lg text-sm">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if (session('error'))
+                        <div class="mb-4 px-4 py-3 bg-red-50 dark:bg-red-900/20 border border-red-300 dark:border-red-800 text-red-700 dark:text-red-300 rounded-lg text-sm">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
                     {{-- Form --}}
                     <form action="{{ route('product.store') }}" method="POST" class="space-y-6">
                         @csrf

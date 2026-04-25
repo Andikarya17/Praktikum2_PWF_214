@@ -26,6 +26,7 @@ class StoreProductRequest extends FormRequest
             'quantity' => 'required|integer',
             'price' => 'required|numeric',
             'user_id' => 'required|exists:users,id',
+            'category_id' => 'nullable|exists:category,id',
         ];
     }
 
@@ -43,6 +44,8 @@ class StoreProductRequest extends FormRequest
 
             'user_id.required' => 'Pemilik produk wajib dipilih.',
             'user_id.exists' => 'Pemilik produk tidak ditemukan di database.',
+
+            'category_id.exists' => 'Kategori tidak ditemukan di database.',
         ];
     }
 }

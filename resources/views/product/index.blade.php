@@ -38,6 +38,7 @@
                                 <tr>
                                     <th class="px-6 py-3 text-left font-semibold text-gray-300 uppercase tracking-wider w-16">ID</th>
                                     <th class="px-6 py-3 text-left font-semibold text-gray-300 uppercase tracking-wider">Name</th>
+                                    <th class="px-6 py-3 text-left font-semibold text-gray-300 uppercase tracking-wider">Category</th>
                                     <th class="px-6 py-3 text-left font-semibold text-gray-300 uppercase tracking-wider">Quantity</th>
                                     <th class="px-6 py-3 text-left font-semibold text-gray-300 uppercase tracking-wider">Price</th>
                                     <th class="px-6 py-3 text-left font-semibold text-gray-300 uppercase tracking-wider">Owner</th>
@@ -49,6 +50,7 @@
                                     <tr class="hover:bg-gray-700/50 transition duration-150">
                                         <td class="px-6 py-4 text-gray-400">#{{ $loop->iteration }}</td>
                                         <td class="px-6 py-4 font-medium text-white">{{ $product->name }}</td>
+                                        <td class="px-6 py-4 text-gray-400">{{ $product->category?->name ?? '-' }}</td>
                                         <td class="px-6 py-4 text-gray-300">
                                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $product->quantity > 10 ? 'bg-green-900/40 text-green-300' : 'bg-red-900/40 text-red-300' }}">
                                                 {{ $product->quantity }} pcs
@@ -87,7 +89,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="6" class="px-6 py-12 text-center text-gray-400">
+                                        <td colspan="7" class="px-6 py-12 text-center text-gray-400">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 text-gray-500 mb-3 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
                                             </svg>

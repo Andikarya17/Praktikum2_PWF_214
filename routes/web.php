@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AboutController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
@@ -44,6 +45,10 @@ Route::middleware(['auth', 'can:manage-product'])->group(function () {
     Route::get('/product-export', [ProductController::class, 'export'])
         ->name('product.export')
         ->middleware('can:export-product');
+});
+// Category routes - diamankan dengan Gate manage-category (hanya admin)
+Route::middleware(['auth', 'can:manage-category'])->group(function () {
+    Route::resource('category', CategoryController::class)->except(['show']);
 });
 
 require __DIR__.'/auth.php';

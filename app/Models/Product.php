@@ -15,6 +15,7 @@ class Product extends Model
         'qty',
         'price',
         'user_id',
+        'category_id',
     ];
 
     /**
@@ -32,5 +33,13 @@ class Product extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Relasi: Product dimiliki oleh satu Category
+     */
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
     }
 }

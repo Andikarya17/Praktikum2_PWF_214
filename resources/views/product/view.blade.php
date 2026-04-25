@@ -66,6 +66,13 @@
                             </div>
                         </div>
 
+                        {{-- Category --}}
+                        <div class="flex items-center px-6 py-4">
+                            <div class="w-32 shrink-0 text-sm text-gray-500 dark:text-gray-400">Category</div>
+                            <div class="text-sm text-gray-900 dark:text-gray-100">{{ $product->category?->name ?? '-' }}
+                            </div>
+                        </div>
+
                         {{-- Quantity --}}
                         <div class="flex items-center px-6 py-4">
                             <div class="w-32 shrink-0 text-sm text-gray-500 dark:text-gray-400">Quantity</div>

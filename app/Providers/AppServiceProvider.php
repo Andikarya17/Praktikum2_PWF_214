@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Str;
+use Dedoc\Scramble\Scramble;
+use Illuminate\Routing\Route;
 use App\Models\User;
 
 class AppServiceProvider extends ServiceProvider
@@ -34,6 +37,17 @@ class AppServiceProvider extends ServiceProvider
         // Gate manage-category: hanya admin yang bisa akses menu/halaman kategori
         Gate::define('manage-category', function (User $user) {
             return $user->role === 'admin';
+        });
+
+        // Scramble API documentation configuration
+        Scramble::configure()
+            ->routes(function (Route $route) {
+                return Str::startsWith($route->uri, 'api/');
+            });
+
+        // Allow API docs to be viewed in production
+        Gate::define('viewApiDocs', function () {
+            return true;
         });
     }
 }
